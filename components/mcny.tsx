@@ -1,31 +1,34 @@
 "use client";
-
+import Link from "next/link";
 import { FC, ReactNode, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { twMerge as cn } from "tailwind-merge";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Link from "next/link";
 
-interface projectProps {}
-
-const projects = [
+const mediaList = [
   {
-    client: "Museum of the City of New York",
-    title: "This is New York",
-    image: "/mcny.jpg",
-    link: "/mcny",
+    image: "/mcny/1.jpg",
   },
   {
-    client: "Electronic Arts",
-    title: "40 years of pioneering video games",
-    image: "/ears2.jpg",
-    link: "/ears",
+    image: "/mcny/2.jpeg",
   },
   {
-    client: "Cleveland Museum of Art",
-    title: "Revealing Krishna",
-    image: "/krishna_hero.jpg",
-    link: "/krishna",
+    image: "/mcny/3.jpeg",
+  },
+  {
+    image: "/mcny/4.jpeg",
+  },
+  {
+    image: "/mcny/5.jpeg",
+  },
+  {
+    image: "/mcny/6.jpeg",
+  },
+  {
+    image: "/mcny/7.jpeg",
+  },
+  {
+    image: "/mcny/8.jpeg",
   },
 ];
 
@@ -53,10 +56,9 @@ const Switcher = ({
   );
 };
 
-const Projects: FC<projectProps> = ({}) => {
+const Mcny: FC = ({}) => {
   const [mode, setMode] = useState<1 | 2 | 3>(1);
-  const [project, setProject] = useState(0);
-
+  const [media, setMedia] = useState(0);
   return (
     <>
       <div className="h-[65px] w-full flex justify-around md:justify-end md:gap-[46px] items-center">
@@ -70,6 +72,7 @@ const Projects: FC<projectProps> = ({}) => {
           List
         </Switcher>
       </div>
+
       {mode === 1 && (
         <>
           <Carousel
@@ -79,28 +82,26 @@ const Projects: FC<projectProps> = ({}) => {
             showIndicators={false}
             autoPlay
             infiniteLoop
-            onChange={(index) => setProject(index)}
+            onChange={(index) => setMedia(index)}
             interval={5000}
           >
-            {projects.map((project, idx) => (
-              <Link href={project.link} key={idx}>
-                <div>
-                  <img src={project.image} />
-                </div>
-              </Link>
+            {mediaList.map((m, idx) => (
+              <div key={idx}>
+                <img src={m.image} />
+              </div>
             ))}
           </Carousel>
           <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
             <div className="max-w-[250px] md:max-w-[832px]">
               <p className="text-[24px] md:text-[32px]">
-                {projects[project].client}
+                Museum of the City of New York
               </p>
               <p className="text-[18px] md:text-[32px] opacity-60">
-                {projects[project].title}
+                This is New York
               </p>
             </div>
             <p className="font-thin">
-              {project + 1}/{projects.length}
+              {media + 1}/{mediaList.length}
             </p>
           </div>
         </>
@@ -108,32 +109,10 @@ const Projects: FC<projectProps> = ({}) => {
 
       {mode === 2 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {projects.map((project, idx) => (
-            <Link href={project.link} key={idx}>
-              <div className="relative">
-                <img src={project.image} />
-                <div className="absolute bottom-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-                  <p className="text-white text-[18px] md:text-[32px]">
-                    {project.client}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
-
-      {mode === 3 && (
-        <div className="grid grid-cols-1 gap-12 mt-12">
-          {projects.map((project, idx) => (
-            <Link href={project.link} key={idx}>
-              <div className="mx-12 md:mx-0">
-                <p className="text-[18px] md:text-[32px]">{project.client}</p>
-                <p className="text-[18px] md:text-[32px] opacity-60">
-                  {project.title}
-                </p>
-              </div>
-            </Link>
+          {mediaList.map((m, idx) => (
+            <div className="relative" key={idx}>
+              <img src={m.image} />
+            </div>
           ))}
         </div>
       )}
@@ -141,4 +120,4 @@ const Projects: FC<projectProps> = ({}) => {
   );
 };
 
-export default Projects;
+export default Mcny;
