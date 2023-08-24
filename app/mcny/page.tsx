@@ -15,12 +15,12 @@ export default function Home() {
           exhibition marking the 100 year anniversary of the Museum of the City
           of New York. Dome conceived, designed, and produced three media
           installations integrated into this fun-filled show: a motion title
-          wall that animates famous quotes around the words "New York" using
-          projection mapping; an interactive bookshelf that unlocks depictions
-          of homes from iconic stories like Eloise and The Jeffersons; and the
-          music interactive, Songs of New York which invites visitors to step on
-          each of the five boroughs to play songs across the century from
-          artists like Duke Ellington, Blondie, and Wu-Tang Clan.
+          wall that animates famous quotes around the words &quot;New York&quot;
+          using projection mapping; an interactive bookshelf that unlocks
+          depictions of homes from iconic stories like Eloise and The
+          Jeffersons; and the music interactive, Songs of New York which invites
+          visitors to step on each of the five boroughs to play songs across the
+          century from artists like Duke Ellington, Blondie, and Wu-Tang Clan.
         </p>
 
         <div className="my-[16px] mx-[25px] md:mx-0 leading-7">
