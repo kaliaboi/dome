@@ -102,6 +102,34 @@ const Projects: FC<projectProps> = ({}) => {
           </div>
         </>
       )}
+
+      {mode === 2 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {projects.map((project) => (
+            <div className="relative">
+              <img src={project.image} />
+              <div className="absolute bottom-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
+                <p className="text-white text-[18px] md:text-[32px]">
+                  {project.client}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {mode === 3 && (
+        <div className="grid grid-cols-1 gap-12 mt-12">
+          {projects.map((project) => (
+            <div className="mx-12 md:mx-0">
+              <p className="text-[18px] md:text-[32px]">{project.client}</p>
+              <p className="text-[18px] md:text-[32px] opacity-60">
+                {project.title}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
