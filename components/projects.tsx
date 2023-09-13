@@ -6,28 +6,30 @@ import { twMerge as cn } from "tailwind-merge";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link";
 
-interface projectProps {}
+interface projectProps {
+  projects: any[];
+}
 
-const projects = [
-  {
-    client: "Museum of the City of New York",
-    title: "This is New York",
-    image: "/mcny.jpg",
-    link: "/mcny",
-  },
-  {
-    client: "Electronic Arts",
-    title: "40 years of pioneering video games",
-    image: "/ears2.jpg",
-    link: "/ears",
-  },
-  {
-    client: "Cleveland Museum of Art",
-    title: "Revealing Krishna",
-    image: "/krishna_hero.jpg",
-    link: "/krishna",
-  },
-];
+// const projects = [
+//   {
+//     client: "Museum of the City of New York",
+//     title: "This is New York",
+//     image: "/mcny.jpg",
+//     link: "/mcny",
+//   },
+//   {
+//     client: "Electronic Arts",
+//     title: "40 years of pioneering video games",
+//     image: "/ears2.jpg",
+//     link: "/ears",
+//   },
+//   {
+//     client: "Cleveland Museum of Art",
+//     title: "Revealing Krishna",
+//     image: "/krishna_hero.jpg",
+//     link: "/krishna",
+//   },
+// ];
 
 const Switcher = ({
   mode,
@@ -43,7 +45,7 @@ const Switcher = ({
   return (
     <p
       className={cn(
-        "font-[300] text-[14px] md:text-[21px] uppercase md:capitalize opacity-60 hover:opacity-100 cursor-pointer transition-all duration-300",
+        "font-[300] text-[14px] md:text-[21px] uppercase md:upppercase tracking-wider opacity-60 hover:opacity-100 cursor-pointer transition-all duration-300",
         activeMode === mode && "opacity-100"
       )}
       onClick={onClick}
@@ -53,7 +55,7 @@ const Switcher = ({
   );
 };
 
-const Projects: FC<projectProps> = ({}) => {
+const Projects: FC<projectProps> = ({ projects }) => {
   const [mode, setMode] = useState<1 | 2 | 3>(1);
   const [project, setProject] = useState(0);
 
@@ -83,19 +85,19 @@ const Projects: FC<projectProps> = ({}) => {
             interval={5000}
           >
             {projects.map((project, idx) => (
-              <Link href={project.link} key={idx}>
+              <Link href={`work/${project.slug}`} key={idx}>
                 <div>
-                  <img src={project.image} />
+                  <img src={"/mcny.jpg"} />
                 </div>
               </Link>
             ))}
           </Carousel>
           <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
-            <div className="max-w-[250px] md:max-w-[832px]">
-              <p className="text-[24px] md:text-[32px]">
+            <div className=" md:max-w-[832px] group">
+              <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF]">
                 {projects[project].client}
               </p>
-              <p className="text-[18px] md:text-[32px] opacity-60">
+              <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF]">
                 {projects[project].title}
               </p>
             </div>
@@ -109,9 +111,9 @@ const Projects: FC<projectProps> = ({}) => {
       {mode === 2 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {projects.map((project, idx) => (
-            <Link href={project.link} key={idx}>
+            <Link href={`work/${project.slug}`} key={idx}>
               <div className="relative">
-                <img src={project.image} />
+                <img src={"/mcny.jpg"} />
                 <div className="absolute bottom-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
                   <p className="text-white text-[18px] md:text-[32px]">
                     {project.client}
@@ -126,7 +128,7 @@ const Projects: FC<projectProps> = ({}) => {
       {mode === 3 && (
         <div className="grid grid-cols-1 gap-12 mt-12">
           {projects.map((project, idx) => (
-            <Link href={project.link} key={idx}>
+            <Link href={`work/${project.slug}`} key={idx}>
               <div className="mx-12 md:mx-0">
                 <p className="text-[18px] md:text-[32px]">{project.client}</p>
                 <p className="text-[18px] md:text-[32px] opacity-60">

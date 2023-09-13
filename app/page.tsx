@@ -2,15 +2,17 @@ import Accordian from "@/components/accordian";
 import Footer from "@/components/footer";
 import Nav from "@/components/nav";
 import Projects from "@/components/projects";
+import { getProjects } from "@/sanity/sanity-utils";
 import { PlusIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
   return (
     <main className="bg-light dark:bg-dark min-h-full">
       <Nav />
       <div className="md:mx-[160px]">
-        <Projects />
+        <Projects projects={projects} />
       </div>
       <div className="mt-[48px] w-full flex flex-col">
         <Accordian title="About">

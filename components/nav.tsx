@@ -5,7 +5,7 @@ interface navProps {}
 
 const Nav: FC<navProps> = ({}) => {
   return (
-    <nav className="h-[55px] md:h-[97px] border-b-[3px] border-[#1a1a1a] dark:border-white w-full flex justify-center md:justify-start md:px-[160px] items-center">
+    <nav className="h-[55px] md:h-[97px] border-b-[3px] border-[#1a1a1a] dark:border-white w-full flex justify-star px-[24px] md:px-[160px] items-center">
       <div className="block md:hidden">
         <div className="block dark:hidden md:hidden">
           <Logo color="light" size="small" />

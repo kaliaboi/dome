@@ -83,6 +83,71 @@ const project = {
         },
       ],
     },
+    {
+      name: "awards",
+      title: "Awards",
+      type: "array",
+      of: [
+        {
+          title: "Block",
+          type: "block",
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+              { title: "Highlight", value: "highlight" },
+            ],
+          },
+          // ...annotations, styles, lists and marks you already have
+        },
+        {
+          type: "image",
+          fields: [
+            {
+              name: "caption",
+              title: "Caption",
+              type: "string",
+            },
+          ],
+          options: { hotspot: true },
+        },
+      ],
+    },
+    {
+      name: "collaborators",
+      title: "Collaborators",
+      type: "array",
+      of: [
+        {
+          title: "Block",
+          type: "block",
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+              { title: "Highlight", value: "highlight" },
+            ],
+          },
+          // ...annotations, styles, lists and marks you already have
+        },
+        {
+          type: "image",
+          fields: [
+            {
+              name: "caption",
+              title: "Caption",
+              type: "string",
+            },
+          ],
+          options: { hotspot: true },
+        },
+      ],
+    },
+    {
+      name: "services",
+      title: "Services",
+      type: "string",
+    },
   ],
 };
 

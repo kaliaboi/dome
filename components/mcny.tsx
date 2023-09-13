@@ -32,6 +32,10 @@ const mediaList = [
   },
 ];
 
+interface projectProps {
+  project: any;
+}
+
 const Switcher = ({
   mode,
   children,
@@ -56,7 +60,7 @@ const Switcher = ({
   );
 };
 
-const Mcny: FC = ({}) => {
+const Mcny: FC<projectProps> = ({ project }) => {
   const [mode, setMode] = useState<1 | 2 | 3>(1);
   const [media, setMedia] = useState(0);
   return (
@@ -93,11 +97,9 @@ const Mcny: FC = ({}) => {
           </Carousel>
           <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
             <div className="max-w-[250px] md:max-w-[832px]">
-              <p className="text-[24px] md:text-[32px]">
-                Museum of the City of New York
-              </p>
+              <p className="text-[24px] md:text-[32px]">{project.client}</p>
               <p className="text-[18px] md:text-[32px] opacity-60">
-                This is New York
+                {project.title}
               </p>
             </div>
             <p className="font-thin">
