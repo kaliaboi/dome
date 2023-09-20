@@ -140,7 +140,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
         {mode === 3 && (
           <div className="grid grid-cols-1 gap-12 mt-12">
             {projects.map((project, idx) => (
-              <div className=" group flex justify-between">
+              <div className=" group flex justify-between" key={idx}>
                 <div className=" cursor-pointer mt-[16px]">
                   <Link href={`work/${project.slug}`}>
                     <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
