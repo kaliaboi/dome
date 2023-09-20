@@ -14,40 +14,32 @@ export default async function WorkPage({ params }: any) {
       <div className="md:mx-[160px]">
         <Mcny project={project} />
       </div>
-      <div className="md:mx-[160px] mt-12">
-        <PortableText value={project.content} />
-        {/* <p className="my-[16px] mx-[25px] md:mx-0 leading-7">
-          This Is New York: 100 Years of the City in Art and Pop Culture is an
-          exhibition marking the 100 year anniversary of the Museum of the City
-          of New York. Dome conceived, designed, and produced three media
-          installations integrated into this fun-filled show: a motion title
-          wall that animates famous quotes around the words &quot;New York&quot;
-          using projection mapping; an interactive bookshelf that unlocks
-          depictions of homes from iconic stories like Eloise and The
-          Jeffersons; and the music interactive, Songs of New York which invites
-          visitors to step on each of the five boroughs to play songs across the
-          century from artists like Duke Ellington, Blondie, and Wu-Tang Clan.
-        </p> */}
+      <div className="mx-[24px] md:mx-[160px] mt-12 block lg:flex justify-between text-[20px]">
+        <div className="lg:w-[800px] ">
+          <PortableText value={project.content} />
+        </div>
 
-        <div className="my-[16px] mx-[25px] md:mx-0 leading-7">
-          <p className="font-bold mt-[32px]">Services</p>
-          <p>
-            Lead experience strategy, creative direction, design, and media
-            production by Dome.
-          </p>
-
-          <p className="font-bold mt-[32px]">Collaborators</p>
-          <p>
-            Exhibition design by Studio Joseph. Creative technology by The
-            Cuttlefish
-          </p>
-
-          <p className="font-bold mt-[32px]">Awards</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            urna purus, feugiat et pulvinar id, tincidunt id mi. Suspendisse
-            vitae arcu vitae dui ornare
-          </p>
+        <div>
+          <div className="my-[16px] w-[333px] lg:my-0 md:mx-0">
+            {project.services && (
+              <>
+                <p className="font-bold mt-[32px] lg:mt-0">Services</p>
+                <p>{project.services}</p>
+              </>
+            )}
+            {project.collaborators && (
+              <>
+                <p className="font-bold mt-[32px]">Collaborators</p>
+                <PortableText value={project.collaborators} />
+              </>
+            )}
+            {project.awards && (
+              <>
+                <p className="font-bold mt-[32px]">Awards</p>
+                <PortableText value={project.awards} />
+              </>
+            )}
+          </div>
         </div>
       </div>
       <Footer />

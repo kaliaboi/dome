@@ -32,6 +32,9 @@ export async function getProject(slug: string) {
                 "slug": slug.current,
                 "cover": cover.asset->url,
                 content,
+                awards,
+                collaborators,
+                services,
           }`,
     { slug }
   );

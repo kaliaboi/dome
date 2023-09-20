@@ -12,19 +12,45 @@ const Accordian: FC<accordianProps> = ({ title, children }) => {
   const [open, setOpen] = useState(false);
   return (
     <div
-      className="border-t-[3px] md:mx-[160px] transition-all duration-300 cursor-pointer"
+      className={twMerge(
+        "border-t-[3px] transition-all duration-300 cursor-pointer"
+      )}
       onClick={() => setOpen((o) => !o)}
     >
-      <div className="my-[11px] md:my-[21px] mx-[25px] md:mx-0 flex justify-between items-center">
-        <p className="text-[24px] md:text-[32px]">{title}</p>
-        <PlusIcon
+      <div
+        className={twMerge(
+          "h-[80px] flex items-center w-full justify-between transition-all duration-300",
+          open && "bg-[#252EFF]"
+        )}
+      >
+        <div
           className={twMerge(
-            "text-black dark:text-white w-[24px] h-[24px] md:w-[32px] md:h-[32px] transition-all duration-300",
-            open && "rotate-45"
+            "mx-[25px] md:mx-[160px] flex justify-between items-center w-full transition-all duration-300"
           )}
-        />
+        >
+          <p
+            className={twMerge(
+              "text-[24px] md:text-[32px]",
+              open && "text-white"
+            )}
+          >
+            {title}
+          </p>
+          <PlusIcon
+            className={twMerge(
+              "text-black dark:text-white w-[24px] h-[24px] md:w-[32px] md:h-[32px] transition-all duration-300",
+              open && "rotate-45 text-white"
+            )}
+          />
+        </div>
       </div>
-      <div className={twMerge("transition-all", open ? "block" : "hidden")}>
+      <div
+        className={twMerge(
+          "transition-all",
+          "xl:ml-[543px] xl:mt-[47px] xl:mr-[256px] md:mx-[160px] md:mt-[47px] text-[20px] mb-[72px]",
+          open ? "block" : "hidden"
+        )}
+      >
         {children}
       </div>
     </div>

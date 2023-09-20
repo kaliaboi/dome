@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <main className="bg-light dark:bg-dark min-h-full">
       <Nav />
-      <div className="md:mx-[160px]">
+      <div className="">
         <Projects projects={projects} />
       </div>
       <div className="mt-[48px] w-full flex flex-col">
@@ -102,7 +102,9 @@ export default async function Home() {
           </p>
         </Accordian>
       </div>
-      <Footer />
+      <div className="border-t-[3px]">
+        <Footer />
+      </div>
     </main>
   );
 }

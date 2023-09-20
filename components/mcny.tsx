@@ -112,7 +112,7 @@ const Mcny: FC<projectProps> = ({ project }) => {
       {mode === 2 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {mediaList.map((m, idx) => (
-            <div className="relative" key={idx}>
+            <div className="relative mx-[24px]" key={idx}>
               <img src={m.image} />
             </div>
           ))}

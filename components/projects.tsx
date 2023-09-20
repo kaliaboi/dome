@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import { twMerge as cn } from "tailwind-merge";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link";
+import MobileNav from "./mobile-nav";
 
 interface projectProps {
   projects: any[];
@@ -61,84 +62,102 @@ const Projects: FC<projectProps> = ({ projects }) => {
 
   return (
     <>
-      <div className="h-[65px] w-full flex justify-around md:justify-end md:gap-[46px] items-center">
-        <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
-          Slides
-        </Switcher>
-        <Switcher activeMode={mode} mode={2} onClick={() => setMode(2)}>
-          Grid
-        </Switcher>
-        <Switcher activeMode={mode} mode={3} onClick={() => setMode(3)}>
-          List
-        </Switcher>
-      </div>
-      {mode === 1 && (
-        <>
-          <Carousel
-            showArrows={true}
-            showThumbs={false}
-            showStatus={false}
-            showIndicators={false}
-            autoPlay
-            infiniteLoop
-            onChange={(index) => setProject(index)}
-            interval={5000}
-          >
+      <MobileNav />
+      <div className="md:mx-[160px]">
+        <div className="hidden lg:flex h-[65px] w-full justify-around md:justify-end md:gap-[46px] items-center">
+          <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
+            Slides
+          </Switcher>
+          <Switcher activeMode={mode} mode={2} onClick={() => setMode(2)}>
+            Grid
+          </Switcher>
+          <Switcher activeMode={mode} mode={3} onClick={() => setMode(3)}>
+            List
+          </Switcher>
+        </div>
+        {mode === 1 && (
+          <>
+            <Carousel
+              showArrows={true}
+              showThumbs={false}
+              showStatus={false}
+              showIndicators={false}
+              autoPlay
+              infiniteLoop
+              onChange={(index) => setProject(index)}
+              interval={5000}
+            >
+              {projects.map((project, idx) => (
+                <Link href={`work/${project.slug}`} key={idx}>
+                  <div>
+                    <img src={"/mcny.jpg"} />
+                  </div>
+                </Link>
+              ))}
+            </Carousel>
+            <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
+              <div className="group cursor-pointer">
+                <Link href={`work/${projects[project].slug}`}>
+                  <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+                    {projects[project].client}
+                  </p>
+                  <br />
+                  <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+                    {projects[project].title}
+                  </p>
+                </Link>
+              </div>
+              <p className="font-thin">
+                {project + 1}/{projects.length}
+              </p>
+            </div>
+          </>
+        )}
+
+        {mode === 2 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[33px] gap-y-[38px]">
             {projects.map((project, idx) => (
               <Link href={`work/${project.slug}`} key={idx}>
-                <div>
-                  <img src={"/mcny.jpg"} />
+                <div className="relative group">
+                  <img src={"/mcny.jpg"} className="aspect-video w-full" />
+                  <div className="cursor-pointer mt-[16px]">
+                    <Link href={`work/${project.slug}`}>
+                      <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+                        {project.client}
+                      </p>
+                      <br />
+                      <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+                        {project.title}
+                      </p>
+                    </Link>
+                  </div>
                 </div>
               </Link>
             ))}
-          </Carousel>
-          <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
-            <div className=" md:max-w-[832px] group">
-              <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF]">
-                {projects[project].client}
-              </p>
-              <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF]">
-                {projects[project].title}
-              </p>
-            </div>
-            <p className="font-thin">
-              {project + 1}/{projects.length}
-            </p>
           </div>
-        </>
-      )}
+        )}
 
-      {mode === 2 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {projects.map((project, idx) => (
-            <Link href={`work/${project.slug}`} key={idx}>
-              <div className="relative">
-                <img src={"/mcny.jpg"} />
-                <div className="absolute bottom-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-                  <p className="text-white text-[18px] md:text-[32px]">
-                    {project.client}
-                  </p>
+        {mode === 3 && (
+          <div className="grid grid-cols-1 gap-12 mt-12">
+            {projects.map((project, idx) => (
+              <div className=" group flex justify-between">
+                <div className=" cursor-pointer mt-[16px]">
+                  <Link href={`work/${project.slug}`}>
+                    <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+                      {project.client}
+                    </p>
+                    <br />
+                    <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+                      {project.title}
+                    </p>
+                  </Link>
                 </div>
+                <div className="hidden lg:block opacity-0 aspect-video w-80 bg-slate-300 group-hover:opacity-100 transition-all"></div>
               </div>
-            </Link>
-          ))}
-        </div>
-      )}
-
-      {mode === 3 && (
-        <div className="grid grid-cols-1 gap-12 mt-12">
-          {projects.map((project, idx) => (
-            <Link href={`work/${project.slug}`} key={idx}>
-              <div className="mx-12 md:mx-0">
-                <p className="text-[18px] md:text-[32px]">{project.client}</p>
-                <p className="text-[18px] md:text-[32px] opacity-60">
-                  {project.title}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 };
