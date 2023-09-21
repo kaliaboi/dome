@@ -21,6 +21,22 @@ export async function getProjects() {
   return projects;
 }
 
+export async function getContent() {
+  const content = await sanityClient.fetch(
+    groq`*[_type == "content"]{
+              _id,
+              _createdAt,
+              version,
+              about,
+              services,
+              "teamPhoto": team.photo.asset->url,
+              "teamIntro": team.intro,
+              team,
+          }`
+  );
+  return content[0];
+}
+
 export async function getProject(slug: string) {
   const projects = await sanityClient.fetch(
     groq`*[_type == "project" && slug.current == $slug][0]{
