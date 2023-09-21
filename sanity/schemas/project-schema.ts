@@ -48,10 +48,32 @@ const project = {
       type: "url",
     },
     {
+      name: "video",
+      title: "Video",
+      type: "string",
+    },
+    {
       name: "media",
       title: "Media",
       type: "array",
-      of: [{ type: "image", options: { hotspot: true } }],
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "image",
+              title: "Image",
+              type: "image",
+              options: { hotspot: true },
+            },
+            {
+              name: "title",
+              title: "Title",
+              type: "string",
+            },
+          ],
+        },
+      ],
     },
     {
       name: "content",
