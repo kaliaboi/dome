@@ -6,6 +6,7 @@ import { twMerge as cn } from "tailwind-merge";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link";
 import MobileNav from "./mobile-nav";
+import Image from "next/image";
 
 interface projectProps {
   projects: any[];
@@ -90,7 +91,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
               {projects.map((project, idx) => (
                 <Link href={`work/${project.slug}`} key={idx}>
                   <div>
-                    <img src={"/mcny.jpg"} />
+                    <img src={project.cover} />
                   </div>
                 </Link>
               ))}
@@ -119,7 +120,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
             {projects.map((project, idx) => (
               <Link href={`work/${project.slug}`} key={idx}>
                 <div className="relative group">
-                  <img src={"/mcny.jpg"} className="aspect-video w-full" />
+                  <img src={project.cover} className="aspect-video w-full" />
                   <div className="cursor-pointer mt-[16px]">
                     <Link href={`work/${project.slug}`}>
                       <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
@@ -152,7 +153,9 @@ const Projects: FC<projectProps> = ({ projects }) => {
                     </p>
                   </Link>
                 </div>
-                <div className="hidden lg:block opacity-0 aspect-video w-80 bg-slate-300 group-hover:opacity-100 transition-all"></div>
+                <div className="hidden lg:block opacity-0 aspect-video w-80 bg-slate-300 group-hover:opacity-100 transition-all relative">
+                  <Image src={project.cover} fill alt="" />
+                </div>
               </div>
             ))}
           </div>

@@ -15,7 +15,7 @@ export async function getProjects() {
               title,
               client,
               "slug": slug.current,
-              "cover": cover.asset->url,
+              "cover": media[0].image.asset->url,
           }`
   );
   return projects;

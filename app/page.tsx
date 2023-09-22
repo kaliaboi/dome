@@ -3,14 +3,12 @@ import Footer from "@/components/footer";
 import Nav from "@/components/nav";
 import Projects from "@/components/projects";
 import { getContent, getProjects } from "@/sanity/sanity-utils";
-import { PortableText } from "@portabletext/react";
-import { PlusIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 
 export default async function Home() {
   const projects = await getProjects();
   const content = await getContent();
-  console.log(content);
+  console.log(projects);
   projects.sort((a: any, b: any) => a.order - b.order);
   return (
     <main className="bg-light dark:bg-dark min-h-full">
