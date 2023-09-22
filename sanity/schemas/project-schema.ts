@@ -50,7 +50,24 @@ const project = {
     {
       name: "video",
       title: "Video",
-      type: "string",
+      type: "object",
+      fields: [
+        {
+          name: "videoID",
+          title: "Video ID",
+          type: "string",
+        },
+        {
+          name: "embed",
+          title: "Embed Code",
+          type: "string",
+        },
+        {
+          name: "alt",
+          title: "Alt text",
+          type: "string",
+        },
+      ],
     },
     {
       name: "media",
