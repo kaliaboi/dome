@@ -141,11 +141,11 @@ const Mcny: FC<projectProps> = ({ project }) => {
           {project.media.map((m: any, idx: any) => (
             <div className="group flex justify-between" key={idx}>
               <div className="mt-[16px] max-w-[736px]">
-                <p className="text-[24px] md:text-[32px] font-[700] inline-block">
-                  Image {idx}
+                <p className="text-[24px] md:text-[32px] font-[700] inline-block group-hover:bg-[#252EFF] group-hover:text-white">
+                  Image {idx + 1}
                 </p>
                 <br />
-                <p className="text-[24px] md:text-[32px]  inline-block">
+                <p className="text-[24px] md:text-[32px]  inline-block group-hover:bg-[#252EFF] group-hover:text-white">
                   {m.title}
                 </p>
               </div>
