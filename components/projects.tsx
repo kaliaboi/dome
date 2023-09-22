@@ -153,7 +153,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
                     </p>
                   </Link>
                 </div>
-                <div className="hidden lg:block opacity-0 aspect-video w-80 bg-slate-300 group-hover:opacity-100 transition-all relative">
+                <div className="hidden lg:block opacity-0 aspect-video w-96 bg-slate-300 group-hover:opacity-100 transition-all relative">
                   <Image src={project.cover} fill alt="" />
                 </div>
               </div>

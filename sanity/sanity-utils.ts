@@ -47,6 +47,10 @@ export async function getProject(slug: string) {
                 client,
                 "slug": slug.current,
                 "cover": cover.asset->url,
+                media[]{
+                  "image":image.asset->url,
+                  title
+                },
                 content,
                 awards,
                 collaborators,

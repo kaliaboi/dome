@@ -4,6 +4,7 @@ import { FC, ReactNode, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { twMerge as cn } from "tailwind-merge";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Image from "next/image";
 
 const mediaList = [
   {
@@ -89,7 +90,15 @@ const Mcny: FC<projectProps> = ({ project }) => {
             onChange={(index) => setMedia(index)}
             interval={5000}
           >
-            {mediaList.map((m, idx) => (
+            <iframe
+              src="https://player.vimeo.com/video/866418842?h=09d661d5c3"
+              width="100%"
+              height="100%"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              style={{ margin: 0, width: "100%" }}
+            ></iframe>
+            {project.media.map((m: any, idx: any) => (
               <div key={idx}>
                 <img src={m.image} />
               </div>
@@ -110,10 +119,39 @@ const Mcny: FC<projectProps> = ({ project }) => {
       )}
 
       {mode === 2 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          {mediaList.map((m, idx) => (
-            <div className="relative mx-[24px]" key={idx}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[33px] gap-y-[22px]">
+          <iframe
+            src="https://player.vimeo.com/video/866418842?h=09d661d5c3"
+            width="100%"
+            height="100%"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            style={{ margin: 0, width: "100%" }}
+          ></iframe>
+          {project.media.map((m: any, idx: any) => (
+            <div className="relative" key={idx}>
               <img src={m.image} />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {mode === 3 && (
+        <div className="grid grid-cols-1 gap-12 mt-12">
+          {project.media.map((m: any, idx: any) => (
+            <div className="group flex justify-between" key={idx}>
+              <div className="mt-[16px] max-w-[736px]">
+                <p className="text-[24px] md:text-[32px] font-[700] inline-block">
+                  Image {idx}
+                </p>
+                <br />
+                <p className="text-[24px] md:text-[32px]  inline-block">
+                  {m.title}
+                </p>
+              </div>
+              <div className="hidden lg:block opacity-0 aspect-video w-96 bg-slate-300 group-hover:opacity-100 transition-all relative">
+                <Image src={m.image} fill alt="" />
+              </div>
             </div>
           ))}
         </div>
