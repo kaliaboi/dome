@@ -110,7 +110,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
                 //   style={{ width: "100%", height: "1000px", margin: 0 }}
                 // />
                 <>
-                  {project.videoID !== null && (
+                  {project.videoID !== null ? (
                     <div className="player-wrapper">
                       <ReactPlayer
                         className="react-player"
@@ -121,6 +121,10 @@ const Projects: FC<projectProps> = ({ projects }) => {
                         muted
                         loop
                       />
+                    </div>
+                  ) : (
+                    <div key={idx}>
+                      <img src={project.cover} />
                     </div>
                   )}
                 </>
