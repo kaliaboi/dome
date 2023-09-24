@@ -8,6 +8,7 @@ import Image from "next/image";
 export default async function Home() {
   const projects = await getProjects();
   const content = await getContent();
+  console.log(projects);
   projects.sort((a: any, b: any) => a.order - b.order);
   return (
     <main className="bg-light dark:bg-dark min-h-full">

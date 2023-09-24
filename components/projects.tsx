@@ -1,12 +1,16 @@
 "use client";
 
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, Suspense, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { twMerge as cn } from "tailwind-merge";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link";
 import MobileNav from "./mobile-nav";
 import Image from "next/image";
+import Vimeo from "@u-wave/react-vimeo";
+import dynamic from "next/dynamic";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 interface projectProps {
   projects: any[];
@@ -83,17 +87,43 @@ const Projects: FC<projectProps> = ({ projects }) => {
               showThumbs={false}
               showStatus={false}
               showIndicators={false}
-              autoPlay
               infiniteLoop
               onChange={(index) => setProject(index)}
               interval={5000}
             >
               {projects.map((project, idx) => (
-                <Link href={`work/${project.slug}`} key={idx}>
-                  <div>
-                    <img src={project.cover} />
-                  </div>
-                </Link>
+                // <Link href={`work/${project.slug}`} key={idx}>
+                //   <iframe
+                //     src="https://player.vimeo.com/video/866418842?h=09d661d5c3"
+                //     width="100%"
+                //     height="100%"
+                //     allow="autoplay; fullscreen"
+                //     allowFullScreen
+                //     style={{ margin: 0, width: "100%", height: "1000px" }}
+                //   ></iframe>
+                // </Link>
+                // <ReactPlayer
+                //   url={project.videoID}
+                //   playing
+                //   muted
+                //   loop
+                //   style={{ width: "100%", height: "1000px", margin: 0 }}
+                // />
+                <>
+                  {project.videoID !== null && (
+                    <div className="player-wrapper">
+                      <ReactPlayer
+                        className="react-player"
+                        url={project.videoID}
+                        width="100%"
+                        height="100%"
+                        playing
+                        muted
+                        loop
+                      />
+                    </div>
+                  )}
+                </>
               ))}
             </Carousel>
             <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">

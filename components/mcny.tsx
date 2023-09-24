@@ -89,9 +89,10 @@ const Mcny: FC<projectProps> = ({ project }) => {
             infiniteLoop
             onChange={(index) => setMedia(index)}
             interval={5000}
+            className="aspect-video w-full"
           >
             <iframe
-              src="https://player.vimeo.com/video/866418842?h=09d661d5c3"
+              src={project.videoID}
               width="100%"
               height="100%"
               allow="autoplay; fullscreen"

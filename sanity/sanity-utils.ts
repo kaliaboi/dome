@@ -16,6 +16,7 @@ export async function getProjects() {
               client,
               "slug": slug.current,
               "cover": media[0].image.asset->url,
+              "videoID": video.videoID
           }`
   );
   return projects;
@@ -51,6 +52,7 @@ export async function getProject(slug: string) {
                   "image":image.asset->url,
                   title
                 },
+                "videoID": video.videoID,
                 content,
                 awards,
                 collaborators,
