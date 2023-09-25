@@ -5,6 +5,8 @@ import Projects from "@/components/projects";
 import { getContent, getProjects } from "@/sanity/sanity-utils";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const projects = await getProjects();
   const content = await getContent();

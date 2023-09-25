@@ -4,6 +4,8 @@ import Nav from "@/components/nav";
 import { getProject } from "@/sanity/sanity-utils";
 import { PortableText } from "@portabletext/react";
 
+export const dynamic = "force-dynamic";
+
 export default async function WorkPage({ params }: any) {
   const slug = params.project;
   const project = await getProject(slug);

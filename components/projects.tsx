@@ -109,9 +109,9 @@ const Projects: FC<projectProps> = ({ projects }) => {
                 //   loop
                 //   style={{ width: "100%", height: "1000px", margin: 0 }}
                 // />
-                <>
+                <div key={idx}>
                   {project.videoID !== null ? (
-                    <div className="player-wrapper" key={idx}>
+                    <div className="player-wrapper">
                       <ReactPlayer
                         className="react-player"
                         url={project.videoID}
@@ -127,7 +127,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
                       <img src={project.cover} />
                     </div>
                   )}
-                </>
+                </div>
               ))}
             </Carousel>
             <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
