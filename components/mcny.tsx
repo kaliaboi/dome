@@ -64,6 +64,7 @@ const Switcher = ({
 const Mcny: FC<projectProps> = ({ project }) => {
   const [mode, setMode] = useState<1 | 2 | 3>(1);
   const [media, setMedia] = useState(0);
+  console.log(project.media);
   return (
     <>
       <div className="h-[65px] w-full flex justify-around md:justify-end md:gap-[46px] items-center">

@@ -111,7 +111,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
                 // />
                 <>
                   {project.videoID !== null ? (
-                    <div className="player-wrapper">
+                    <div className="player-wrapper" key={idx}>
                       <ReactPlayer
                         className="react-player"
                         url={project.videoID}

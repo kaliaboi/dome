@@ -3,7 +3,7 @@ import { createClient, groq } from "next-sanity";
 export const sanityClient = createClient({
   projectId: "4fanl4tz",
   dataset: "production",
-  apiVersion: "2023-09-01",
+  apiVersion: "2023-09-21",
 });
 
 export async function getProjects() {

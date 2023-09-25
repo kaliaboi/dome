@@ -10,4 +10,5 @@ export const sanityConfig = defineConfig({
   basePath: "/admin",
   plugins: [deskTool()],
   schema: { types: schemas },
+  useCdn: false,
 });
