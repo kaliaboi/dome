@@ -51,7 +51,7 @@ const Switcher = ({
   return (
     <p
       className={cn(
-        "font-[300] text-[14px] md:text-[21px] uppercase md:capitalize opacity-60 hover:opacity-100 cursor-pointer transition-all duration-300",
+        "font-[300] text-[14px] md:text-[21px] uppercase md:upppercase tracking-wider opacity-60 hover:opacity-100 cursor-pointer transition-all duration-300 hover:bg-[#252EFF] hover:text-white p-2 m-2",
         activeMode === mode && "opacity-100"
       )}
       onClick={onClick}
@@ -107,56 +107,82 @@ const Mcny: FC<projectProps> = ({ project }) => {
             ))}
           </Carousel>
           <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
-            <div className="max-w-[250px] md:max-w-[832px]">
-              <p className="text-[24px] md:text-[32px]">{project.client}</p>
-              <p className="text-[18px] md:text-[32px] opacity-60">
+            <div className="lg:mt-[68px]">
+              <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+                {project.client}
+              </p>
+              <br />
+              <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
                 {project.title}
               </p>
             </div>
             <p className="font-thin">
-              {media + 1}/{mediaList.length}
+              {media + 1}/{project.media.length + 1}
             </p>
           </div>
         </>
       )}
 
       {mode === 2 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[33px] gap-y-[22px]">
-          <iframe
-            src="https://player.vimeo.com/video/866418842?h=09d661d5c3"
-            width="100%"
-            height="100%"
-            allow="autoplay; fullscreen"
-            allowFullScreen
-            style={{ margin: 0, width: "100%" }}
-          ></iframe>
-          {project.media.map((m: any, idx: any) => (
-            <div className="relative" key={idx}>
-              <img src={m.image} />
-            </div>
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[33px] gap-y-[22px]">
+            <iframe
+              src={project.videoID}
+              width="100%"
+              height="100%"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              style={{ margin: 0, width: "100%" }}
+            ></iframe>
+            {project.media.map((m: any, idx: any) => (
+              <div className="relative" key={idx}>
+                <img src={m.image} />
+              </div>
+            ))}
+          </div>
+          <div className="lg:mt-[68px]">
+            <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+              {project.client}
+            </p>
+            <br />
+            <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+              {project.title}
+            </p>
+          </div>
+        </>
       )}
 
       {mode === 3 && (
-        <div className="grid grid-cols-1 gap-12 mt-12">
-          {project.media.map((m: any, idx: any) => (
-            <div className="group flex justify-between" key={idx}>
-              <div className="mt-[16px] max-w-[736px]">
-                <p className="text-[24px] md:text-[32px] font-[700] inline-block group-hover:bg-[#252EFF] group-hover:text-white">
-                  Image {idx + 1}
-                </p>
-                <br />
-                <p className="text-[24px] md:text-[32px]  inline-block group-hover:bg-[#252EFF] group-hover:text-white">
-                  {m.title}
-                </p>
+        <>
+          <div className="grid grid-cols-1 gap-12 mt-12">
+            {project.media.map((m: any, idx: any) => (
+              <div className="group flex justify-between" key={idx}>
+                <div className="mt-[16px] max-w-[736px]">
+                  <p className="text-[24px] md:text-[32px] font-[700] inline-block group-hover:bg-[#252EFF] group-hover:text-white">
+                    Image {idx + 1}
+                  </p>
+                  <br />
+                  <p className="text-[24px] md:text-[32px]  inline-block group-hover:bg-[#252EFF] group-hover:text-white">
+                    {m.title}
+                  </p>
+                </div>
+                <div className="hidden lg:block opacity-0 aspect-video w-96 bg-slate-300 group-hover:opacity-100 transition-all relative">
+                  <Image src={m.image} fill alt="" />
+                </div>
               </div>
-              <div className="hidden lg:block opacity-0 aspect-video w-96 bg-slate-300 group-hover:opacity-100 transition-all relative">
-                <Image src={m.image} fill alt="" />
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+          <div className="mt-[16px]">
+            <div className="h-[1px] bg-black dark:bg-white my-[80px]"></div>
+            <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+              {project.client}
+            </p>
+            <br />
+            <p className="text-[24px] md:text-[32px] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
+              {project.title}
+            </p>
+          </div>
+        </>
       )}
     </>
   );

@@ -51,7 +51,7 @@ const Switcher = ({
   return (
     <p
       className={cn(
-        "font-[300] text-[14px] md:text-[21px] uppercase md:upppercase tracking-wider opacity-60 hover:opacity-100 cursor-pointer transition-all duration-300",
+        "font-[300] text-[14px] md:text-[21px] uppercase md:upppercase tracking-wider opacity-60 hover:opacity-100 cursor-pointer transition-all duration-300 hover:bg-[#252EFF] hover:text-white p-2 m-2",
         activeMode === mode && "opacity-100"
       )}
       onClick={onClick}
@@ -173,7 +173,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
         )}
 
         {mode === 3 && (
-          <div className="grid grid-cols-1 gap-12 mt-12">
+          <div className="grid grid-cols-1 gap-4 lg:gap-0 lg:-space-y-14 mt-12 mx-8 lg:mx-0">
             {projects.map((project, idx) => (
               <div className=" group flex justify-between" key={idx}>
                 <div className=" cursor-pointer mt-[16px]">

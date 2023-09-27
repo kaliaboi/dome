@@ -2,8 +2,8 @@ import { FC } from "react";
 
 const Footer: FC = ({}) => {
   return (
-    <div className="mt-[48px] mx-[25px] md:mx-[160px] max-w-full text-[14px] flex flex-col gap-4">
-      <a href="mailto://info@domecollective.com">info@domecollective.com</a>
+    <div className="mt-[48px] mx-[25px] md:mx-[160px] max-w-full text-[14px] flex flex-col gap-4 pb-[50px]">
+      <a href="mailto:info@domecollective.com">info@domecollective.com</a>
       <a href="https://www.instagram.com/domecollective">Instagram</a>
       <a href="https://www.linkedin.com/company/domecollective/">LinkedIn</a>
       <div className="opacity-60">

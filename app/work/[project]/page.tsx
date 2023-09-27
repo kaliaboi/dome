@@ -16,12 +16,12 @@ export default async function WorkPage({ params }: any) {
       <div className="md:mx-[160px]">
         <Mcny project={project} />
       </div>
-      <div className="mx-[24px] md:mx-[160px] mt-12 block lg:flex justify-between text-[20px]">
+      <div className="mx-[24px] md:mx-[160px] mt-12 block flex-row xl:flex justify-between text-[20px] gap-12">
         <div className="lg:w-[800px] ">
           <PortableText value={project.content} />
         </div>
 
-        <div>
+        <div className="mt-12 xl:mt-0">
           <div className="my-[16px] w-[333px] lg:my-0 md:mx-0">
             {project.services && (
               <>
