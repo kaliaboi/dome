@@ -67,7 +67,7 @@ const Mcny: FC<projectProps> = ({ project }) => {
   console.log(project.media);
   return (
     <>
-      <div className="h-[65px] w-full flex justify-around md:justify-end md:gap-[46px] items-center">
+      <div className="h-[65px] w-full flex justify-around md:justify-end md:gap-[46px] items-center md:px-[160px]">
         <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
           Slides
         </Switcher>
@@ -82,15 +82,17 @@ const Mcny: FC<projectProps> = ({ project }) => {
       {mode === 1 && (
         <>
           <Carousel
-            showArrows={true}
+            showArrows={false}
             showThumbs={false}
             showStatus={false}
             showIndicators={false}
-            autoPlay
             infiniteLoop
+            centerMode
+            swipeable
+            useKeyboardArrows
             onChange={(index) => setMedia(index)}
-            interval={5000}
-            className="aspect-video w-full"
+            emulateTouch
+            selectedItem={media}
           >
             <iframe
               src={project.videoID}
@@ -101,12 +103,16 @@ const Mcny: FC<projectProps> = ({ project }) => {
               style={{ margin: 0, width: "100%" }}
             ></iframe>
             {project.media.map((m: any, idx: any) => (
-              <div key={idx}>
+              <div
+                key={idx}
+                className="cursor-grab active:cursor-grabbing focus:cursor-grabbing"
+                onClick={() => setMedia(idx)}
+              >
                 <img src={m.image} />
               </div>
             ))}
           </Carousel>
-          <div className="mt-[11px] mx-[25px] md:mx-0 flex justify-between max-w-full">
+          <div className="mt-[11px] flex justify-between max-w-full md:mx-[160px]">
             <div className="lg:mt-[68px]">
               <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
                 {project.client}
@@ -125,22 +131,24 @@ const Mcny: FC<projectProps> = ({ project }) => {
 
       {mode === 2 && (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[33px] gap-y-[22px]">
-            <iframe
-              src={project.videoID}
-              width="100%"
-              height="100%"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-              style={{ margin: 0, width: "100%" }}
-            ></iframe>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[33px] gap-y-[22px] md:mx-[160px]">
+            <div className="aspect-video w-full">
+              <iframe
+                src={project.videoID}
+                width="100%"
+                height="100%"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                style={{ margin: 0, width: "100%" }}
+              ></iframe>
+            </div>
             {project.media.map((m: any, idx: any) => (
               <div className="relative" key={idx}>
                 <img src={m.image} />
               </div>
             ))}
           </div>
-          <div className="lg:mt-[68px]">
+          <div className="lg:mt-[68px] md:mx-[160px]">
             <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
               {project.client}
             </p>
@@ -154,20 +162,20 @@ const Mcny: FC<projectProps> = ({ project }) => {
 
       {mode === 3 && (
         <>
-          <div className="grid grid-cols-1 gap-12 mt-12">
+          <div className="grid grid-cols-1 gap-12 mt-12 md:mx-[160px]">
             {project.media.map((m: any, idx: any) => (
               <div className="group flex justify-between" key={idx}>
-                <div className="mt-[16px] max-w-[736px]">
-                  <p className="text-[24px] md:text-[32px] font-[700] inline-block group-hover:bg-[#252EFF] group-hover:text-white">
+                <div className="mt-[16px] max-w-[736px] cursor-zoom-in">
+                  <p className="text-[24px] md:text-[32px] font-[700] inline-block">
                     Image {idx + 1}
                   </p>
                   <br />
-                  <p className="text-[24px] md:text-[32px]  inline-block group-hover:bg-[#252EFF] group-hover:text-white">
+                  <p className="text-[24px] md:text-[32px]  inline-block ">
                     {m.title}
                   </p>
                 </div>
-                <div className="hidden lg:block opacity-0 aspect-video w-96 bg-slate-300 group-hover:opacity-100 transition-all relative">
-                  <Image src={m.image} fill alt="" />
+                <div className="hidden lg:block opacity-0 aspect-video w-96 group-hover:opacity-100 transition-all relative">
+                  <Image src={m.image} fill alt="" objectFit="cover" />
                 </div>
               </div>
             ))}

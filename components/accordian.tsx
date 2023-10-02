@@ -19,7 +19,8 @@ const Accordian: FC<accordianProps> = ({ title, children }) => {
     >
       <div
         className={twMerge(
-          "h-[80px] flex items-center w-full justify-between transition-all duration-300 hover:bg-[#252EFF] group"
+          "h-[70px] md:h-[80px] flex items-center w-full justify-between transition-all duration-300 hover:bg-[#252EFF] group",
+          open && "bg-[#252EFF]"
         )}
       >
         <div
@@ -45,7 +46,7 @@ const Accordian: FC<accordianProps> = ({ title, children }) => {
       <div
         className={twMerge(
           "transition-all",
-          "xl:ml-[543px] xl:mt-[47px] xl:mr-[256px] md:mx-[160px] md:mt-[47px] text-[20px] mb-[72px]",
+          "xl:ml-[400px] xl:mt-[47px] xl:mr-[256px] md:mx-[160px] md:mt-[47px] text-[20px] mb-[72px]",
           open ? "block" : "hidden"
         )}
       >

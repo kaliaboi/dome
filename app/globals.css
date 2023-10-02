@@ -32,3 +32,8 @@ h5 {
 iframe {
   margin: 0 !important;
 }
+
+li.slide {
+  padding-left: 30px !important;
+  padding-right: 20px !important;
+}

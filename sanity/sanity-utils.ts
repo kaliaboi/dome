@@ -16,6 +16,10 @@ export async function getProjects() {
               client,
               "slug": slug.current,
               "cover": media[0].image.asset->url,
+              media[]{
+                "image":image.asset->url,
+                title
+              },
               "videoID": video.videoID
           }`
   );

@@ -28,7 +28,7 @@ export default async function Home() {
           <p className="my-[16px] mx-[25px] md:mx-0 leading-7">
             {content.services.intro}
           </p>
-          <div className="my-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="my-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
             {content.services.categories.map((category: any, idx: number) => (
               <div className="mx-[25px] md:mx-0" key={idx}>
                 <p className="font-bold">{category.title}</p>
@@ -41,7 +41,7 @@ export default async function Home() {
         </Accordian>
         <Accordian title="Partners">
           <div className="mt-[16px] mx-[25px] md:mx-0 relative aspect-[640/378]">
-            <Image src={content.teamPhoto} fill alt="team" />
+            <Image src={content.teamPhoto} fill alt="team" objectFit="cover" />
           </div>
           <p className="mt-[16px] mx-[25px] md:mx-0 leading-7">
             {content.team.intro}
