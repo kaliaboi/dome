@@ -147,6 +147,7 @@ const Switcher = ({
 const Projects: FC<projectProps> = ({ projects }) => {
   const [mode, setMode] = useState<1 | 2 | 3>(1);
   const [p, setP] = useState(0);
+  const [pr, SetPr] = useState(projects[0]);
   const [domLoaded, setDomLoaded] = useState(false);
   const [clicking, setClicking] = useState(false);
 

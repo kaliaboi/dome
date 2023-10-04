@@ -53,57 +53,94 @@ const Mcny: FC<projectProps> = ({ project }) => {
     setIsViewerOpen(false);
   };
 
-  console.log(project.media);
+  console.log("video", project.videoID);
   var images: any = [];
   project.media.map((p: any) => images.push(p.image));
+
   return (
     <>
       <MobileNav mode={mode} setMode={setMode} />
-      <div className="hidden lg:flex h-[65px] w-full justify-around md:justify-end md:gap-[46px] items-center md:px-[160px]">
-        <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
-          Slides
-        </Switcher>
-        <Switcher activeMode={mode} mode={2} onClick={() => setMode(2)}>
-          Grid
-        </Switcher>
-        <Switcher activeMode={mode} mode={3} onClick={() => setMode(3)}>
-          List
-        </Switcher>
+      <div className="md:pl-[160px] flex items-center">
+        <Link
+          href={"/"}
+          className="font-[300] text-[14px] md:text-[21px] uppercase md:upppercase tracking-wider cursor-pointer transition-all duration-300 hover:bg-[#252EFF] hover:text-white p-2 m-2"
+        >
+          BACK
+        </Link>
+        <div className="hidden lg:flex h-[65px] w-full justify-around md:justify-end md:gap-[46px] items-center md:px-[160px]">
+          <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
+            Slides
+          </Switcher>
+          <Switcher activeMode={mode} mode={2} onClick={() => setMode(2)}>
+            Grid
+          </Switcher>
+          <Switcher activeMode={mode} mode={3} onClick={() => setMode(3)}>
+            List
+          </Switcher>
+        </div>
       </div>
 
       {mode === 1 && (
         <div className="mt-[32px]">
-          <Carousel
-            showArrows={false}
-            showThumbs={false}
-            showStatus={false}
-            showIndicators={false}
-            infiniteLoop
-            centerMode
-            swipeable
-            useKeyboardArrows
-            onChange={(index) => setMedia(index)}
-            emulateTouch
-            selectedItem={media}
-          >
-            <iframe
-              src={project.videoID}
-              width="100%"
-              height="100%"
-              allow="autoplay; fullscreen"
-              allowFullScreen
-              style={{ margin: 0, width: "100%" }}
-            ></iframe>
-            {project.media.map((m: any, idx: any) => (
-              <div
-                key={idx}
-                className="cursor-grab active:cursor-grabbing focus:cursor-grabbing"
-                onClick={() => setMedia(idx)}
-              >
-                <img src={m.image} />
-              </div>
-            ))}
-          </Carousel>
+          {project.videoID !== null ? (
+            <Carousel
+              showArrows={false}
+              showThumbs={false}
+              showStatus={false}
+              showIndicators={false}
+              infiniteLoop
+              centerMode
+              swipeable
+              useKeyboardArrows
+              onChange={(index) => setMedia(index)}
+              emulateTouch
+              selectedItem={media}
+            >
+              <iframe
+                src={project.videoID}
+                width="100%"
+                height="100%"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                style={{ margin: 0, width: "100%" }}
+              ></iframe>
+
+              {project.media.map((m: any, idx: any) => (
+                <div
+                  key={idx}
+                  className="cursor-grab active:cursor-grabbing focus:cursor-grabbing"
+                  onClick={() => setMedia(idx)}
+                >
+                  <img src={m.image} />
+                </div>
+              ))}
+            </Carousel>
+          ) : (
+            <Carousel
+              showArrows={false}
+              showThumbs={false}
+              showStatus={false}
+              showIndicators={false}
+              infiniteLoop
+              centerMode
+              swipeable
+              useKeyboardArrows
+              onChange={(index) => setMedia(index)}
+              emulateTouch
+              selectedItem={media}
+            >
+              {project.media.map((m: any, idx: any) => (
+                <div
+                  key={idx}
+                  className="cursor-grab active:cursor-grabbing focus:cursor-grabbing overflow-hidden"
+                  onClick={() => setMedia(idx)}
+                >
+                  <img src={m.image} />
+                </div>
+              ))}
+            </Carousel>
+          )}
+
           <div className="mt-[11px] flex justify-between max-w-full md:mx-[160px] mx-[24px]">
             <div className="lg:mt-[68px]">
               <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
@@ -124,18 +161,23 @@ const Mcny: FC<projectProps> = ({ project }) => {
       {mode === 2 && (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[33px] gap-y-[22px] md:mx-[160px] mx-[24px] mt-[32px]">
-            <div className="aspect-video w-full">
-              <iframe
-                src={project.videoID}
-                width="100%"
-                height="100%"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                style={{ margin: 0, width: "100%" }}
-              ></iframe>
-            </div>
+            {project.videoID !== null && (
+              <div className="aspect-video w-full">
+                <iframe
+                  src={project.videoID}
+                  width="100%"
+                  height="100%"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                  style={{ margin: 0, width: "100%" }}
+                ></iframe>
+              </div>
+            )}
             {project.media.map((m: any, idx: any) => (
-              <div className="relative cursor-zoom-in" key={idx}>
+              <div
+                className="relative cursor-zoom-in aspect-video w-full overflow-hidden"
+                key={idx}
+              >
                 <img src={m.image} onClick={() => openImageViewer(idx)} />
               </div>
             ))}

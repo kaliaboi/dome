@@ -3,10 +3,43 @@ import Accordian from "@/components/accordian";
 import Mcny from "@/components/mcny";
 import Nav from "@/components/nav";
 import { getContent, getProject } from "@/sanity/sanity-utils";
-import { PortableText } from "@portabletext/react";
+import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 
 export const dynamic = "force-dynamic";
+
+const portableComponents: PortableTextComponents = {
+  types: {
+    image: ({ value }) => <img src={value.imageUrl} />,
+    callToAction: ({ value, isInline }) =>
+      isInline ? (
+        <a href={value.url}>{value.text}</a>
+      ) : (
+        <div className="callToAction">{value.text}</div>
+      ),
+  },
+  block: {
+    normal: (props) => {
+      return <p className="mb-12">{props.children}</p>;
+    },
+  },
+  marks: {
+    link: ({ children, value }) => {
+      const rel = !value.href.startsWith("/")
+        ? "noreferrer noopener"
+        : undefined;
+      return (
+        <a
+          href={value.href}
+          rel={rel}
+          className="underline text-white hover:bg-[#252EFF] hover:text-white"
+        >
+          {children}
+        </a>
+      );
+    },
+  },
+};
 
 export default async function WorkPage({ params }: any) {
   const slug = params.project;
@@ -21,8 +54,11 @@ export default async function WorkPage({ params }: any) {
           <Mcny project={project} />
         </div>
         <div className="mx-[24px] md:mx-[160px] mt-12 block flex-row xl:flex justify-between text-[20px] gap-12">
-          <div className=" ">
-            <PortableText value={project.content} />
+          <div className="max-w-[800px]">
+            <PortableText
+              value={project.content}
+              components={portableComponents}
+            />
           </div>
 
           <div className="mt-12 xl:mt-0">
@@ -42,7 +78,10 @@ export default async function WorkPage({ params }: any) {
               {project.awards && (
                 <>
                   <p className="font-bold mt-[32px]">Awards</p>
-                  <PortableText value={project.awards} />
+                  <PortableText
+                    value={project.awards}
+                    components={portableComponents}
+                  />
                 </>
               )}
             </div>
