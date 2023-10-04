@@ -158,7 +158,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
     <>
       {domLoaded && (
         <>
-          <MobileNav />
+          <MobileNav mode={mode} setMode={setMode} />
           <div>
             <div className="hidden lg:flex h-[65px] w-full justify-around md:justify-end md:gap-[46px] items-center md:px-[160px]">
               <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
