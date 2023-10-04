@@ -1,6 +1,6 @@
 const content = {
   name: "content",
-  title: "Home Page Content",
+  title: "Home Content",
   type: "document",
   fields: [
     {
