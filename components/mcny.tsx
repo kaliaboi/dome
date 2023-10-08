@@ -61,12 +61,6 @@ const Mcny: FC<projectProps> = ({ project }) => {
     <>
       <MobileNav mode={mode} setMode={setMode} />
       <div className="md:pl-[160px] flex items-center">
-        <Link
-          href={"/"}
-          className="font-[300] text-[14px] md:text-[21px] uppercase md:upppercase tracking-wider cursor-pointer transition-all duration-300 hover:bg-[#252EFF] hover:text-white p-2 m-2"
-        >
-          BACK
-        </Link>
         <div className="hidden lg:flex h-[65px] w-full justify-around md:justify-end md:gap-[46px] items-center md:px-[160px]">
           <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
             Slides
@@ -218,7 +212,7 @@ const Mcny: FC<projectProps> = ({ project }) => {
             ))}
           </div>
           <div className="h-[1px] bg-black dark:bg-white my-[80px]"></div>
-          <div className="mt-[16px] mx-[24px]">
+          <div className="lg:mt-[68px] md:mx-[160px] mx-[24px]">
             <p className="text-[24px] md:text-[32px] font-[700] group-hover:bg-[#252EFF] group-hover:text-white inline-block">
               {project.client}
             </p>

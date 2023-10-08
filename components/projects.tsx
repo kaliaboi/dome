@@ -173,7 +173,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
               </Switcher>
             </div>
             {mode === 1 && (
-              <>
+              <div className="">
                 <Carousel
                   showArrows={false}
                   showThumbs={false}
@@ -187,26 +187,11 @@ const Projects: FC<projectProps> = ({ projects }) => {
                   swipeable
                   emulateTouch
                   selectedItem={p}
+                  onClickItem={() =>
+                    (window.location.href = `/work/${projects[p].slug}`)
+                  }
                 >
                   {projects.map((project, idx) => (
-                    // <Link href={`work/${project.slug}`} key={idx}>
-                    //   <iframe
-                    //     src="https://player.vimeo.com/video/866418842?h=09d661d5c3"
-                    //     width="100%"
-                    //     height="100%"
-                    //     allow="autoplay; fullscreen"
-                    //     allowFullScreen
-                    //     style={{ margin: 0, width: "100%", height: "1000px" }}
-                    //   ></iframe>
-                    // </Link>
-                    // <ReactPlayer
-                    //   url={project.videoID}
-                    //   playing
-                    //   muted
-                    //   loop
-                    //   style={{ width: "100%", height: "1000px", margin: 0 }}
-                    // />
-
                     <div key={idx} onClick={() => setP(idx)}>
                       <div
                         key={idx}
@@ -221,34 +206,33 @@ const Projects: FC<projectProps> = ({ projects }) => {
                           objectFit="cover"
                         />
                       </div>
-                      <div
-                        className={twMerge(
-                          "mt-[11px] justify-between text-start hidden transition-all duration-300 delay-400",
-                          idx === p && "flex"
-                        )}
-                      >
-                        <div className="group cursor-pointer max-w-2xl">
-                          <Link href={`work/${project.slug}`}>
-                            <p className="text-[20px] md:text-[32px] font-[700] mt-0 inline-block leading-10">
-                              <span className="group-hover:bg-[#252EFF] group-hover:text-white">
-                                {project.client}
-                              </span>
-                            </p>
-                            <p className="text-[20px] md:text-[32px] leading-10">
-                              <span className="group-hover:bg-[#252EFF] group-hover:text-white">
-                                {project.title}
-                              </span>
-                            </p>
-                          </Link>
-                        </div>
-                        <p className="font-thin leading-10">
-                          {idx + 1}/{projects.length}
-                        </p>
-                      </div>
                     </div>
                   ))}
                 </Carousel>
-              </>
+                <div
+                  className={twMerge(
+                    "mt-[29px] justify-between text-start flex transition-all duration-300 delay-400 mx-[24px] md:mx-[160px]"
+                  )}
+                >
+                  <div className="group cursor-pointer max-w-2xl">
+                    <a href={`work/${projects[p].slug}`}>
+                      <p className="text-[20px] md:text-[32px] font-[700] mt-0 inline-block leading-6 md:leading-10">
+                        <span className="group-hover:bg-[#252EFF] group-hover:text-white">
+                          {projects[p].client}
+                        </span>
+                      </p>
+                      <p className="text-[20px] md:text-[32px] leading-6 md:leading-10">
+                        <span className="group-hover:bg-[#252EFF] group-hover:text-white">
+                          {projects[p].title}
+                        </span>
+                      </p>
+                    </a>
+                  </div>
+                  <p className="font-thin leading-4 md:leading-10">
+                    {p + 1}/{projects.length}
+                  </p>
+                </div>
+              </div>
             )}
 
             {mode === 2 && (

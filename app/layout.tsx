@@ -1,14 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, DM_Mono, DM_Sans } from "next/font/google";
 import localFont from "next/font/local";
-
-const inter = Inter({ subsets: ["latin"] });
-export const sans = DM_Sans({ subsets: ["latin"] });
-export const mono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-});
 
 const semi = localFont({
   src: [
