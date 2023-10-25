@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
-import { FC, ReactNode, useCallback, useState } from "react";
+import { FC, ReactNode, useCallback, useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
-import { twMerge as cn } from "tailwind-merge";
+import { twMerge as cn, twMerge } from "tailwind-merge";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
 import MobileNav from "./mobile-nav";
 import ImageViewer from "react-simple-image-viewer";
 import { Cross1Icon, Cross2Icon } from "@radix-ui/react-icons";
+import Vimeo from "@u-wave/react-vimeo";
 
 interface projectProps {
   project: any;
@@ -98,7 +99,10 @@ const Mcny: FC<projectProps> = ({ project }) => {
                 height="100%"
                 allow="autoplay; fullscreen"
                 allowFullScreen
-                style={{ margin: 0, width: "100%" }}
+                style={{
+                  width: "100%",
+                  margin: 0,
+                }}
               ></iframe>
 
               {project.media.map((m: any, idx: any) => (

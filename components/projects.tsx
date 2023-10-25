@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link";
 import MobileNav from "./mobile-nav";
 import Image from "next/image";
-import Vimeo from "@u-wave/react-vimeo";
+
 import dynamic from "next/dynamic";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
