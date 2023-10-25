@@ -162,7 +162,7 @@ const Projects: FC<projectProps> = ({ projects }) => {
           <div className="fixed top-0 left-0 right-0 z-50 bg-light dark:bg-dark">
             <MobileNav mode={mode} setMode={setMode} />
           </div>
-          <div className="mt-[54px]">
+          <div className="mt-[80px]">
             <div className="hidden lg:flex h-[65px] w-full justify-around md:justify-end md:gap-[46px] items-center md:px-[160px]">
               <Switcher activeMode={mode} mode={1} onClick={() => setMode(1)}>
                 Slides
