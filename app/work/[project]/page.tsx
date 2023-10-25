@@ -49,8 +49,10 @@ export default async function WorkPage({ params }: any) {
   return (
     <>
       <main className="bg-light dark:bg-dark min-h-full">
-        <Nav />
-        <div className="md:mx-0">
+        <div className="fixed top-0 left-0 right-0 z-50 bg-light dark:bg-dark">
+          <Nav />
+        </div>
+        <div className="md:mx-0 lg:mt-24">
           <Mcny project={project} />
         </div>
         <div className="mx-[24px] md:mx-[160px] mt-12 block flex-row xl:flex justify-between text-[20px] gap-12">
