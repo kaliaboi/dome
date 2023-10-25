@@ -32,7 +32,7 @@ const portableComponents: PortableTextComponents = {
         <a
           href={value.href}
           rel={rel}
-          className="underline text-white hover:bg-[#252EFF] hover:text-white"
+          className="underline dark:text-white hover:bg-[#252EFF] hover:text-white transition-all"
         >
           {children}
         </a>

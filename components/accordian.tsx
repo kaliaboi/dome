@@ -31,7 +31,7 @@ const Accordian: FC<accordianProps> = ({ title, children }) => {
         >
           <p
             className={twMerge(
-              "text-[24px] md:text-[32px] group-hover:text-white",
+              "text-[24px] md:text-[32px]",
               open && "text-white"
             )}
           >
