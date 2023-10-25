@@ -49,7 +49,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={semi.className}>{children}</body>
+      <body className={semi.className + " bg-light dark:bg-dark"}>
+        {children}
+      </body>
     </html>
   );
 }

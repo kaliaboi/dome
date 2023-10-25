@@ -14,8 +14,10 @@ export default async function Home() {
   projects.sort((a: any, b: any) => a.order - b.order);
   return (
     <main className="bg-light dark:bg-dark min-h-full">
-      <Nav />
-      <div className="">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-light dark:bg-dark">
+        <Nav />
+      </div>
+      <div className="lg:mt-24">
         <Projects projects={projects} />
       </div>
       <div className="mt-[48px] w-full flex flex-col">
