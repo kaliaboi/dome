@@ -19,8 +19,9 @@ const Accordian: FC<accordianProps> = ({ title, children }) => {
     >
       <div
         className={twMerge(
-          "h-[70px] md:h-[80px] flex items-center w-full justify-between transition-all duration-300 hover:bg-[#252EFF] group",
-          open && "bg-[#252EFF]"
+          "h-[70px] md:h-[80px] flex items-center w-full justify-between transition-all duration-300 group",
+          open && "bg-[#252EFF]",
+          !open && "bg-none"
         )}
       >
         <div
