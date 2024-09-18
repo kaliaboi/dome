@@ -22,7 +22,9 @@ const Footer: FC = ({}) => {
         LinkedIn
       </a>
       <div className="opacity-60">
-        <p className="text-[14px]">© 2023 Dome Collective LLC.</p>
+        <p className="text-[14px]">
+          © {new Date().getFullYear()} Dome Collective LLC.
+        </p>
         <p className="text-[14px]">All rights reserved.</p>
       </div>
     </div>
